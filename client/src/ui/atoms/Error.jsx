@@ -1,4 +1,6 @@
 import { Box, Typography } from '@mui/material';
+import errorImage from '../../assets/unknown_error.png';
+import { theme } from '../../theme';
 
 export const Error = ({ error }) => {
   return (
@@ -13,7 +15,11 @@ export const Error = ({ error }) => {
       {
         error?.message?.includes('Network Error') ? (
           <Typography>Uruchom Server!</Typography>
-        ) : null //  TODO in TASK 1
+        ) :
+          <Box>
+            <img src={errorImage} />
+            <Typography sx={{ color: theme.palette.grey[400] }}>Wystąpił nieoczekiwany błąd</Typography>
+          </Box>
       }
     </Box>
   );
