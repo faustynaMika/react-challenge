@@ -13,11 +13,14 @@ export { Card } from './atoms/Card';
 // molecules
 export { CategoryCell } from './molecules/CategoryCell';
 export { Table } from './molecules/table/Table';
+export { Modal } from './molecules/Modal';
 
 // organisms
 export { AppBar } from './organisms/AppBar';
 export { MainMenu } from './organisms/Menu';
 export { LedgerWidget } from './organisms/Ledger.widget';
+export { AddNewLedgerRecord } from './organisms/AddNewLedgerRecord.modal';
+export { AddNewBudgetRecord } from './organisms/AddNewBudgetRecord.modal';
 
 // templates
 export { Page } from './templates/Page';
