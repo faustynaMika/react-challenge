@@ -12,6 +12,7 @@ export { Card } from './atoms/Card';
 
 // molecules
 export { CategoryCell } from './molecules/CategoryCell';
+export { CategorySelect } from './molecules/CategorySelect';
 export { Table } from './molecules/table/Table';
 export { Modal } from './molecules/Modal';
 

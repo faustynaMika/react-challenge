@@ -25,11 +25,6 @@ export const BudgetPage = () => {
   const handleOpenAddModal = () => setOpenAddModal(true);
   const handleCloseAddModal = () => setOpenAddModal(false);
 
-  const addCost = () => {
-    // setOpenAddModal(false);
-    handleCloseAddModal();
-    alert('Definiuje budżet');
-  };
   return (
     <Page title="Budżet">
       <Card
@@ -59,7 +54,6 @@ export const BudgetPage = () => {
       <AddNewBudgetRecord
         open={openAddModal}
         handleClose={handleCloseAddModal}
-        onSubmit={addCost}
       />
     </Page>
   );

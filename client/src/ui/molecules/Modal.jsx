@@ -4,7 +4,16 @@ import { Modal as MuiModal } from '@mui/material';
 import { Card, CardHeader, CardContent, CardActions } from '@mui/material';
 import { Button } from 'ui/atoms/Button';
 
-export const Modal = ({ children, title, open, handleClose, onSubmit }) => {
+export const Modal = ({
+  children,
+  title,
+  open,
+  handleClose,
+  onSubmit,
+  submitButtonDisabled = false,
+}) => {
+  console.log(onSubmit);
+
   return (
     <MuiModal onBackdropClick={handleClose} open={open} onClose={handleClose}>
       <Card
@@ -14,7 +23,6 @@ export const Modal = ({ children, title, open, handleClose, onSubmit }) => {
           left: '50%',
           transform: 'translate(-50%, -50%)',
           width: '30%',
-          height: '20%',
         }}
       >
         <CardHeader title={title} />
@@ -24,7 +32,12 @@ export const Modal = ({ children, title, open, handleClose, onSubmit }) => {
             justifyContent: 'flex-end',
           }}
         >
-          <Button onClick={onSubmit} variant="outlined">
+          <Button
+            type="submit"
+            onClick={() => onSubmit()}
+            variant="outlined"
+            disabled={submitButtonDisabled}
+          >
             Zapisz
           </Button>
           <Button
