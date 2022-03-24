@@ -30,9 +30,6 @@ export const LedgerWidget = () => {
   const handleOpenRemoveModal = () => setOpenRemoveModal(true);
   const handleCloseRemoveModal = () => setOpenRemoveModal(false);
 
-  const addCost = () => alert('Dodaje koszt');
-  const removeCost = () => alert('Usuwam koszt');
-
   return (
     <>
       <Card
@@ -86,13 +83,11 @@ export const LedgerWidget = () => {
         type="INCOME"
         open={openAddModal}
         handleClose={handleCloseAddModal}
-        onSubmit={addCost}
       />
       <AddNewLedgerRecord
         type="EXPENSE"
         open={openRemoveModal}
         handleClose={handleCloseRemoveModal}
-        onSubmit={removeCost}
       />
     </>
   );
