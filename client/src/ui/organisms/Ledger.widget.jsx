@@ -1,24 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
   ActionHeader,
-  Card,
-  Button,
-  Table,
-  Loader,
-  Error,
-  NoContent,
-  Money,
-  CategoryCell,
-  LocalizedDate,
   AddNewLedgerRecord,
+  Button,
+  Card,
+  CategoryCell,
+  Error,
+  Loader,
+  LocalizedDate,
+  Money,
+  NoContent,
+  Table,
 } from 'ui';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { Box, Grid } from '@mui/material';
 import { LedgerService } from '../../api';
-import { useQuery, useMutation } from 'react-query';
-import { useState } from 'react';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
 
 export const LedgerWidget = () => {
   const [openAddModal, setOpenAddModal] = useState(false);
@@ -52,7 +51,7 @@ export const LedgerWidget = () => {
               >
                 <Button
                   variant="outlined"
-                  startIcon={<AddIcon />}
+                  startIcon={<AddIcon/>}
                   onClick={handleOpenAddModal}
                 >
                   Wpłać
@@ -63,7 +62,7 @@ export const LedgerWidget = () => {
                     marginLeft: '20px',
                   }}
                   variant="outlined"
-                  startIcon={<RemoveIcon />}
+                  startIcon={<RemoveIcon/>}
                 >
                   Wypłać
                 </Button>
@@ -74,7 +73,7 @@ export const LedgerWidget = () => {
       >
         <Grid container>
           <Grid item xs={12}>
-            <LedgerTable></LedgerTable>
+            <LedgerTable />
           </Grid>
         </Grid>
       </Card>
@@ -94,6 +93,8 @@ export const LedgerWidget = () => {
 };
 
 const LedgerTable = () => {
+  const queryClient = useQueryClient();
+
   const ledgers = useQuery('findAllLedgers', () => LedgerService.findAll());
   const remove = useMutation((deleteIds) => LedgerService.remove(deleteIds));
 
@@ -101,8 +102,11 @@ const LedgerTable = () => {
     remove.mutate(
       { ids },
       {
-        onSuccess: () => {
-          ledgers.refetch();
+        onSuccess: async () => {
+          await queryClient.invalidateQueries('findAllLedgers');
+          await queryClient.invalidateQueries('findAllCategories');
+          await queryClient.invalidateQueries('findAllBudgets');
+          await queryClient.invalidateQueries('getSummary');
         },
       },
     );
@@ -118,13 +122,13 @@ const LedgerTable = () => {
       id: 'kategoria',
       label: 'Kategoria',
       renderCell: (value) => (
-        <CategoryCell color={value.category.color} name={value.category.name} />
+        <CategoryCell color={value.category.color} name={value.category.name}/>
       ),
     },
     {
       id: 'data',
       label: 'Data',
-      renderCell: (value) => <LocalizedDate date={value.createdAt} />,
+      renderCell: (value) => <LocalizedDate date={value.createdAt}/>,
     },
     {
       id: 'kwota',
@@ -152,16 +156,16 @@ const LedgerTable = () => {
         return (
           <Box component="span" sx={style}>
             {prefix}
-            <Money inCents={value.amountInCents} />
+            <Money inCents={value.amountInCents}/>
           </Box>
         );
       },
     },
   ];
 
-  if (ledgers.isLoading) return <Loader />;
+  if (ledgers.isLoading) return <Loader/>;
 
-  if (ledgers.isError) return <Error />;
+  if (ledgers.isError) return <Error/>;
 
   if (ledgers.isSuccess && ledgers.data.length > 0)
     return (
@@ -173,5 +177,5 @@ const LedgerTable = () => {
       />
     );
 
-  return <NoContent />;
+  return <NoContent/>;
 };
