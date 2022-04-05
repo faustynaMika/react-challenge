@@ -53,7 +53,11 @@ export const AddNewLedgerRecord = ({ type, open, handleClose }) => {
       },
       {
         onSuccess: async () => {
-          await queryClient.refetchQueries(['findAllLedgers']);
+          await queryClient.invalidateQueries('findAllLedgers');
+          await queryClient.invalidateQueries('findAllCategories');
+          await queryClient.invalidateQueries('getSummary');
+          await queryClient.invalidateQueries('findAllBudgets');
+          console.log(queryClient.getMutationCache());
           resetAndClose();
         },
       },

@@ -24,7 +24,7 @@ export const AddNewBudgetRecord = ({ open, handleClose }) => {
   );
 
   const refetchCategories = () => {
-    queryClient.refetchQueries(['findCategoriesForBudget']);
+    queryClient.invalidateQueries(['findCategoriesForBudget']);
   };
 
   useEffect(() => {
@@ -49,7 +49,7 @@ export const AddNewBudgetRecord = ({ open, handleClose }) => {
       },
       {
         onSuccess: async () => {
-          await queryClient.refetchQueries(['findAllBudgets']);
+          await queryClient.invalidateQueries('findAllBudgets');
           resetAndClose();
         },
       },
