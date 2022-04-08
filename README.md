@@ -8,7 +8,9 @@ Informajce na temat zadań oraz tego jak rozpocząć pracę nad nimi będziesz o
 
 znajdując się w katalogu głównym repozytorium react-challenge, uruchom terminal a następnie wywołaj następującą komendę
 
-    npm i
+    npm i!
+    [Uploading gif.budget.gif…]()
+
 
 
 ✨ Terminal powinien wyglądać mniej więcej tak ✨
