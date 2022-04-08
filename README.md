@@ -1,7 +1,6 @@
 # Opis
 To repozytorium zawierające kod do Wyzwania React Dare IT.
 Informajce na temat zadań oraz tego jak rozpocząć pracę nad nimi będziesz otrzymywać mailowo.
-[Uploading gif.budget.gif…]()
 # Pierwsze kroki
 
 ## 🧰 Instalacja pakietów NPM
