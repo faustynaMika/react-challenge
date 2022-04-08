@@ -18,7 +18,7 @@ Rozwinięcie umiejętności programowania w React.js, opanowanie flow wytwarzani
 Aplikacja utworzona w ramach projektu - Dare IT React Challenge - Mająca na celu kontrolowanie swojego budżetu - zarówno przychodów jak i kosztów związanych z życiem codziennym.  
 ![gif_temp](https://user-images.githubusercontent.com/97546871/162446102-85273461-495f-44c9-8a34-1700b2b1d5ff.gif)  
   
-## Technologie⚛️ 
+## Technologie 
 * JavaScript  
 * React   
 * MUI  
@@ -29,12 +29,12 @@ Aplikacja utworzona w ramach projektu - Dare IT React Challenge - Mająca na cel
  3 miesięcznym challenge nauczył mnie korzystania z repozytorium kodu, użycie gotowych komponentów React-owych (MUI)  jak i   tworzenie własnych. Nowością było również poznanie komunikacji z serwerem przy pomocy REST API, testowanie aplikacji, użycie swaggera, stylowania CSS w aplikacji reactowej, routingu oraz gita.  
   
 ### Nowości
-📌Raport wpłat, wypłat oraz obecnego budżetu po naniesieniu zmian.   
-📌System logowania oparty o JWT umożliwiający kilku użytkownikom aktualizować zmiany.   
-📌Obsługa oszczędzania . 
-📌Implementacja API bankowego umożliwiająca pobranie wpłat i wypłat ze swojego konta bankowego.  
+📌Raport wpłat, wypłat oraz obecnego budżetu po naniesieniu zmian.<br>
+📌System logowania oparty o JWT umożliwiający kilku użytkownikom aktualizować zmiany.<br> 
+📌Obsługa oszczędzania.<br> 
+📌Implementacja API bankowego umożliwiająca pobranie wpłat i wypłat ze swojego konta bankowego. 
   
-####  Instalacja pakietów NPM⚙️
+####  Instalacja pakietów NPM
 znajdując się w katalogu głównym repozytorium react-challenge, uruchom terminal a następnie wywołaj następującą komendę  
   
 ` npm install ` 
