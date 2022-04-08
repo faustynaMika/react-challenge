@@ -4,17 +4,17 @@
 
 # Spis treści  
 
-* [Cel projektu🧠](#cel-projektu-🧠)  
-* [Budżet App🫀](#budżet-app🫀)  
-* [Technologie⚛️](#technologie⚛️)  
-* [Umiejętności💪](#umiejętności💪)  
-* [Nowości✍️](#nowości✍️) 
-* [Instalacja pakietów NPM⚙️](#instalacja-pakietów-npm⚙️)  
+* [Cel projektu](#cel-projektu)  
+* [Budżet App](#budżet-app)  
+* [Technologie](#technologie)  
+* [Umiejętności](#umiejętności)  
+* [Nowości](#nowości) 
+* [Instalacja pakietów NPM](#instalacja-pakietów-npm)  
   
-## Cel projektu 🧠
+## Cel projektu
 Rozwinięcie umiejętności programowania w React.js, opanowanie flow wytwarzania oprogramowania.  
 
-## Budżet App🫀
+## Budżet App
 Aplikacja utworzona w ramach projektu - Dare IT React Challenge - Mająca na celu kontrolowanie swojego budżetu - zarówno przychodów jak i kosztów związanych z życiem codziennym.  
 ![gif_temp](https://user-images.githubusercontent.com/97546871/162446102-85273461-495f-44c9-8a34-1700b2b1d5ff.gif)  
   
@@ -24,11 +24,11 @@ Aplikacja utworzona w ramach projektu - Dare IT React Challenge - Mająca na cel
 * MUI  
 * CSS  
   
-### Umiejętności💪
+### Umiejętności
 
  3 miesięcznym challenge nauczył mnie korzystania z repozytorium kodu, użycie gotowych komponentów React-owych (MUI)  jak i   tworzenie własnych. Nowością było również poznanie komunikacji z serwerem przy pomocy REST API, testowanie aplikacji, użycie swaggera, stylowania CSS w aplikacji reactowej, routingu oraz gita.  
   
-### Nowości✍️
+### Nowości
 📌Raport wpłat, wypłat oraz obecnego budżetu po naniesieniu zmian.   
 📌System logowania oparty o JWT umożliwiający kilku użytkownikom aktualizować zmiany.   
 📌Obsługa oszczędzania . 
