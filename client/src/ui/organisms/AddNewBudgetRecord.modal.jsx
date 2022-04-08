@@ -7,6 +7,7 @@ import { Controller, useForm } from 'react-hook-form';
 import FormControl from '@mui/material/FormControl';
 import { BudgetService, CategoryService } from 'api';
 import { useEffect } from 'react';
+import { useSnackbar } from 'notistack';
 export const AddNewBudgetRecord = ({ open, handleClose }) => {
   const {
     control,
@@ -17,6 +18,7 @@ export const AddNewBudgetRecord = ({ open, handleClose }) => {
     mode: 'onChange',
   });
 
+  const { enqueueSnackbar } = useSnackbar();
   const queryClient = useQueryClient();
 
   const categories = useQuery('findCategoriesForBudget', () =>
@@ -50,7 +52,11 @@ export const AddNewBudgetRecord = ({ open, handleClose }) => {
       {
         onSuccess: async () => {
           await queryClient.invalidateQueries('findAllBudgets');
+          enqueueSnackbar('Budżet został zdefiniowany', { variant: `success` });
           resetAndClose();
+        },
+        onError: () => {
+          enqueueSnackbar('Wystąpił nieoczekiwany błąd', { variant: `error` });
         },
       },
     );
