@@ -1,15 +1,14 @@
 # Opis
 To repozytorium zawierające kod do Wyzwania React Dare IT.
 Informajce na temat zadań oraz tego jak rozpocząć pracę nad nimi będziesz otrzymywać mailowo.
-
+[Uploading gif.budget.gif…]()
 # Pierwsze kroki
 
 ## 🧰 Instalacja pakietów NPM
 
 znajdując się w katalogu głównym repozytorium react-challenge, uruchom terminal a następnie wywołaj następującą komendę
 
-    npm i!
-    [Uploading gif.budget.gif…]()
+    npm i
 
 
 
