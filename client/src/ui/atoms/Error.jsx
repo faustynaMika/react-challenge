@@ -17,7 +17,7 @@ export const Error = ({ error }) => {
           <Typography>Uruchom Server!</Typography>
         ) :
           <Box>
-            <img src={errorImage} />
+            <img alt="" src={errorImage} />
             <Typography sx={{ color: theme.palette.grey[400] }}>Wystąpił nieoczekiwany błąd</Typography>
           </Box>
       }
