@@ -18,6 +18,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import { Box, Grid } from '@mui/material';
 import { LedgerService } from '../../api';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
+import { useSnackbar } from 'notistack';
 
 export const LedgerWidget = () => {
   const [openAddModal, setOpenAddModal] = useState(false);
@@ -51,7 +52,7 @@ export const LedgerWidget = () => {
               >
                 <Button
                   variant="outlined"
-                  startIcon={<AddIcon/>}
+                  startIcon={<AddIcon />}
                   onClick={handleOpenAddModal}
                 >
                   Wpłać
@@ -62,7 +63,7 @@ export const LedgerWidget = () => {
                     marginLeft: '20px',
                   }}
                   variant="outlined"
-                  startIcon={<RemoveIcon/>}
+                  startIcon={<RemoveIcon />}
                 >
                   Wypłać
                 </Button>
@@ -97,6 +98,7 @@ const LedgerTable = () => {
 
   const ledgers = useQuery('findAllLedgers', () => LedgerService.findAll());
   const remove = useMutation((deleteIds) => LedgerService.remove(deleteIds));
+  const { enqueueSnackbar } = useSnackbar();
 
   const deleteRecords = (ids) => {
     remove.mutate(
@@ -107,6 +109,10 @@ const LedgerTable = () => {
           await queryClient.invalidateQueries('findAllCategories');
           await queryClient.invalidateQueries('findAllBudgets');
           await queryClient.invalidateQueries('getSummary');
+          enqueueSnackbar('Element został usunięty', { variant: `success` });
+        },
+        onError: () => {
+          enqueueSnackbar('Wystąpił nieoczekiwany błąd', { variant: `error` });
         },
       },
     );
@@ -122,13 +128,13 @@ const LedgerTable = () => {
       id: 'kategoria',
       label: 'Kategoria',
       renderCell: (value) => (
-        <CategoryCell color={value.category.color} name={value.category.name}/>
+        <CategoryCell color={value.category.color} name={value.category.name} />
       ),
     },
     {
       id: 'data',
       label: 'Data',
-      renderCell: (value) => <LocalizedDate date={value.createdAt}/>,
+      renderCell: (value) => <LocalizedDate date={value.createdAt} />,
     },
     {
       id: 'kwota',
@@ -156,16 +162,16 @@ const LedgerTable = () => {
         return (
           <Box component="span" sx={style}>
             {prefix}
-            <Money inCents={value.amountInCents}/>
+            <Money inCents={value.amountInCents} />
           </Box>
         );
       },
     },
   ];
 
-  if (ledgers.isLoading) return <Loader/>;
+  if (ledgers.isLoading) return <Loader />;
 
-  if (ledgers.isError) return <Error/>;
+  if (ledgers.isError) return <Error />;
 
   if (ledgers.isSuccess && ledgers.data.length > 0)
     return (
@@ -177,5 +183,5 @@ const LedgerTable = () => {
       />
     );
 
-  return <NoContent/>;
+  return <NoContent />;
 };

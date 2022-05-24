@@ -18,6 +18,7 @@ import {
 } from 'ui';
 import AddIcon from '@mui/icons-material/Add';
 import { useState } from 'react';
+import { useSnackbar } from 'notistack';
 
 export const BudgetPage = () => {
   const [openAddModal, setOpenAddModal] = useState(false);
@@ -62,6 +63,7 @@ export const BudgetPage = () => {
 const Budget = () => {
   const budgets = useQuery('findAllBudgets', () => BudgetService.findAll());
   const remove = useMutation((deleteIds) => BudgetService.remove(deleteIds));
+  const { enqueueSnackbar } = useSnackbar();
 
   const getStatus = (value) => {
     if (value.currentSpending === value.amountInCents) return 'Wykorzystany';
@@ -75,6 +77,10 @@ const Budget = () => {
       {
         onSuccess: () => {
           budgets.refetch();
+          enqueueSnackbar('Element został usunięty', { variant: `success` });
+        },
+        onError: () => {
+          enqueueSnackbar('Wystąpił nieoczekiwany błąd', { variant: `error` });
         },
       },
     );

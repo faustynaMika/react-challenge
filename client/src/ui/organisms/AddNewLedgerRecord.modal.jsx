@@ -6,6 +6,7 @@ import { useQuery, useMutation, useQueryClient } from 'react-query';
 import { Controller, useForm } from 'react-hook-form';
 import FormControl from '@mui/material/FormControl';
 import { CategoryService, LedgerService } from 'api';
+import { useSnackbar } from 'notistack';
 
 export const AddNewLedgerRecord = ({ type, open, handleClose }) => {
   const {
@@ -29,6 +30,7 @@ export const AddNewLedgerRecord = ({ type, open, handleClose }) => {
   }
 
   const queryClient = useQueryClient();
+  const { enqueueSnackbar } = useSnackbar();
 
   const categories = useQuery('findAllCategories', () =>
     CategoryService.findAll(),
@@ -57,8 +59,17 @@ export const AddNewLedgerRecord = ({ type, open, handleClose }) => {
           await queryClient.invalidateQueries('findAllCategories');
           await queryClient.invalidateQueries('getSummary');
           await queryClient.invalidateQueries('findAllBudgets');
-          console.log(queryClient.getMutationCache());
+
+          if (type === 'INCOME') {
+            enqueueSnackbar('Wpływ został dodany', { variant: `success` });
+          } else {
+            enqueueSnackbar('Wydatek został zapisany', { variant: `success` });
+          }
+
           resetAndClose();
+        },
+        onError: () => {
+          enqueueSnackbar('Wystąpił nieoczekiwany błąd', { variant: `error` });
         },
       },
     );
