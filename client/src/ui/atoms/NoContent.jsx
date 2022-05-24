@@ -12,7 +12,7 @@ export const NoContent = () => {
         flexDirection: 'column',
       }}
     >
-      <img src={noContent} />
+      <img alt="" src={noContent} />
       <Typography sx={{ color: theme.palette.grey[400] }}>Brak danych do wyświetlenia</Typography>
     </Box>
   );
