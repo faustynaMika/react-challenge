@@ -23,13 +23,9 @@ export const AddNewBudgetRecord = ({ open, handleClose }) => {
   const categories = useQuery('findCategoriesForBudget', () =>
     CategoryService.findAll(true),
   );
-
-  const refetchCategories = () => {
-    queryClient.invalidateQueries(['findCategoriesForBudget']);
-  };
-
+  
   useEffect(() => {
-    this.refetchCategories();
+    queryClient.invalidateQueries(['findCategoriesForBudget']);
   }, [open]);
 
   const saveBudget = useMutation((data) => BudgetService.create(data));
