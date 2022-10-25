@@ -12,7 +12,6 @@ export const AddNewBudgetRecord = ({ open, handleClose }) => {
   const {
     control,
     handleSubmit,
-    reset,
     formState: { errors, isValid },
   } = useForm({
     mode: 'onChange',
@@ -30,7 +29,7 @@ export const AddNewBudgetRecord = ({ open, handleClose }) => {
   };
 
   useEffect(() => {
-    refetchCategories();
+    this.refetchCategories();
   }, [open]);
 
   const saveBudget = useMutation((data) => BudgetService.create(data));
