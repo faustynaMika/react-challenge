@@ -154,15 +154,6 @@ theme = createTheme(theme, {
         },
       },
     },
-    MuiTableRow: {
-      styleOverrides: {
-        root: {
-          '&.Mui-selected': {
-            backgroundColor: '#F9FAFD',
-          },
-        },
-      },
-    },
     MuiButton: {
       defaultProps: {
         variant: 'outlined',

@@ -30,14 +30,12 @@ export const AddNewBudgetRecord = ({ open, handleClose }) => {
   };
 
   useEffect(() => {
-    reset();
     refetchCategories();
   }, [open]);
 
   const saveBudget = useMutation((data) => BudgetService.create(data));
 
   const resetAndClose = () => {
-    reset();
     handleClose();
   };
 
